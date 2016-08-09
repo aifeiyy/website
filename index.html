@@ -2,9 +2,42 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>document</title>
+		<title></title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oText1=document.getElementById("text1");
+				var oBtn=document.getElementById("btn");
+				
+				oBtn.onclick=function(){
+					var str="";
+					str+=(Math.round(Math.random()*9));  //随机一个0-9的数，并四舍五入，
+					var m=1;
+					fun();
+					function fun(){
+						var num=Math.round(Math.random()*9);
+						for(var i=0;i<str.length;i++){
+							if(num==str[i]){  //当有重复的值时，就终止函数
+								fun();
+								break;
+							}
+						};
+						if(i==str.length){
+							str+=num;
+							m++;
+							if(m==4){
+								return oText1.value=str;   //当有4个数时就赋值显示在text里
+							}
+							fun();
+						}
+					}
+				}
+				
+					
+			};
+		</script>
 	</head>
-	<body> 
-		
+	<body>
+		<input type="text"  id="text1" />
+		<input type="button" value="随机生成数字验证码" id="btn" />
 	</body>
 </html>
